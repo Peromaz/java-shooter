@@ -21,7 +21,7 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler inputHandler = new KeyHandler();
     Player player = new Player();
 
-    private Insets windowInsets = new Insets(0,0,0,0);
+//    private Insets windowInsets = new Insets(0,0,0,0);
 
     public GamePanel(){
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
@@ -32,8 +32,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         this.addMouseMotionListener(new MouseAdapter() {
             private void updateMouse(MouseEvent e){
-                relativeMousePosition.x = e.getX() - windowInsets.left;
-                relativeMousePosition.y = e.getY() - windowInsets.top;
+                relativeMousePosition.x = e.getX(); //- windowInsets.left;
+                relativeMousePosition.y = e.getY(); //- windowInsets.top;
             }
             @Override
             public void mouseMoved(MouseEvent e){
@@ -46,9 +46,9 @@ public class GamePanel extends JPanel implements Runnable {
         });
     }
 
-    public void setWindowInsets(Insets insets) {
-        this.windowInsets = insets;
-    }
+//    public void setWindowInsets(Insets insets) {
+//        this.windowInsets = insets;
+//    }
     public void startGameThread(){
         gameThread = new Thread(this);
         gameThread.start();
